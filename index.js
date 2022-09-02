@@ -12,4 +12,18 @@ app.use('/api', postRouter)
 // app.get('/',(req, res)=>{
 //     res.send('my text + NODEJS!!')
 // })
+
+// or
+
+// app.get('/', (req, res)=>{
+//     console.log(req.query) //http:/localhost:8080/?test=123&query=myText&third=text
+
+//     res.status(200).json('server working')
+// })
+
+app.post('/', (req, res)=>{
+    console.log(req.body) // in postman create http:/localhost:8080
+
+    res.status(200).json('server working')
+})
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`))
