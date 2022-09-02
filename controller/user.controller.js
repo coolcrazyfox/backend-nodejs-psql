@@ -32,22 +32,22 @@ class UserController{
     async updateUser(req,res){
         try{
             const {id, name, surname} =req.body
-            if (!{id, name, surname}){
-                res.status(400).json({message:"id , name, surname aren't specified"})
+            if (!id){
+                res.status(400).json({message:"id isn't specified"})
             }
             const user = await db.query('UPDATE person SET name =$1, surname =$2 WHERE id = $3 RETURNING *',
                 [name, surname, id]
             )
             res.json(user.rows[0])
         }catch (e){
-            res.status(500).json(e)
+            res.status(500).json(e.message)
         }
     }
     async deleteUser(req,res){
         try{
             const id = req.params.id
             if (!id){
-                res.status(400).json({message:"id , name, surname aren't specified"})
+                res.status(400).json({message:"id isn't specified"})
             }
             const user =await db.query('DELETE FROM person WHERE id = $1', [id])
             res.json(user.rows[0])
