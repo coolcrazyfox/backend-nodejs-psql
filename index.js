@@ -9,6 +9,7 @@ const app = express()
 app.use(express.json())
 app.use('/api', userRouter)
 app.use('/api', postRouter)
+
 // app.get('/',(req, res)=>{
 //     res.send('my text + NODEJS!!')
 // })
@@ -21,9 +22,11 @@ app.use('/api', postRouter)
 //     res.status(200).json('server working')
 // })
 
-app.post('/', (req, res)=>{
-    console.log(req.body) // in postman create http:/localhost:8080
+//post
 
-    res.status(200).json('server working')
-})
+// app.post('/', (req, res)=>{
+//     console.log(req.body) // in postman create http:/localhost:8080
+//
+//     res.status(200).json('server working')
+// })
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`))
